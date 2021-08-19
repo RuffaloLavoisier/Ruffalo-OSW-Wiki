@@ -68,7 +68,13 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Firmware</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#support">Support</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#development-environment">Development Environment</a>
     </li>
@@ -153,10 +159,140 @@
             <div class="section">
               
                 <h1 id="firmware">Firmware</h1>
+<h2 id="features">Features</h2>
+<p>The table below list all currently available features of the OSW-OS. These features can be manually enabled (or disabled) by modifying the <code>platformio.ini</code> and adding (or removing) their <code>-D</code>-Define lines.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OSW_FEATURE_STATS_STEPS</code></td>
+<td>Enable step history (displayed on the watchfaces)</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI</code></td>
+<td>Enable all wifi releated functions (services, webinterface)</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI_APST</code></td>
+<td>Allow the watch to enable wifi client and station simultaneously</td>
+<td><code>OSW_FEATURE_WIFI</code></td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI_ONBOOT</code></td>
+<td>Allow the user to enable the wifi on boot</td>
+<td><code>OSW_FEATURE_WIFI</code></td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_LUA</code></td>
+<td>Enable LUA scripting support for apps</td>
+<td><code>LUA_C89_NUMBERS</code></td>
+</tr>
+<tr>
+<td><code>LUA_C89_NUMBERS</code></td>
+<td>Needed when compiling with LUA support</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>DEBUG=1</code></td>
+<td>Enables debug logging to the console &amp; additional utilities</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>GPS_EDITION</code></td>
+<td>Configure the build for use with GPS (including apps, api, sensors)</td>
+<td><code>PROGMEM_TILES</code>, <code>BOARD_HAS_PSRAM</code></td>
+</tr>
+<tr>
+<td><code>PROGMEM_TILES</code></td>
+<td>Needed when compiling with GPS support</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>BOARD_HAS_PSRAM</code></td>
+<td>Needed when compiling with GPS support</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>GPS_EDITION_ROTATED</code></td>
+<td>Replacement for <code>GPS_EDITION</code> to work with flipped boards</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="support">Support</h3>
+<p>The table below lists which features are available in which version of the OS by default. It is always our goal to also support older hardware revisions, but not all features can run properly using the old schematics.</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th><code>LIGHT_EDITION_V4_0</code></th>
+<th><code>LIGHT_EDITION_V3_3</code></th>
+<th><code>LIGHT_EDITION_V3_2</code></th>
+<th><code>LIGHT_EDITION_DEV_LUA</code></th>
+<th><code>GPS_EDITION_V3_1</code></th>
+<th><code>GPS_EDITION_DEV_ROTATED</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OSW_FEATURE_STATS_STEPS</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>❌</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI</code></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>❌</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI_APST</code></td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_WIFI_ONBOOT</code></td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><code>OSW_FEATURE_LUA</code></td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prerequisites">Prerequisites</h2>
 <p>This page describes the requirements to manually flash the firmware.</p>
 <p>Also check the latest readme file within the software repository: <a href="https://github.com/Open-Smartwatch/open-smartwatch-os/blob/master/Readme.md">https://github.com/Open-Smartwatch/open-smartwatch-os/blob/master/Readme.md</a></p>
 <p>Watch this video: <a href="https://www.youtube.com/watch?v=p-mDOIUr-rQ&amp;ab_channel=pauls_3d_things">https://www.youtube.com/watch?v=p-mDOIUr-rQ&amp;ab_channel=pauls_3d_things</a></p>
-<h2 id="requirements">Requirements</h2>
 <h3 id="development-environment">Development Environment</h3>
 <p>To flash the latest software to the open-smartwatch you will need to install VScode with PlatformIO (Youtube tutorial: <a href="https://youtu.be/JmvMvIphMnY">https://youtu.be/JmvMvIphMnY</a>).</p>
 <h3 id="git">Git</h3>
@@ -172,17 +308,7 @@ This can be fixed by using <a href="https://github.com/juliagoda/CH341SER">this 
 </code></pre>
 <p>Then, open the directory with Visual Studio Code.</p>
 <h2 id="set-up-configh">Set up config.h</h2>
-<p>Got to the directory <code>include/</code> and copy the <code>config.h.example</code> to <code>config.h</code>.</p>
-<p>Inside <code>include/config.h</code> make sure to adapt the following defines:</p>
-<pre><code class="c++">#define WIFI_SSID &quot;yourSSID&quot;
-#define WIFI_PASS &quot;yourP4ssw0rd&quot;
-
-#define TIMEZONE 1
-#define DAYLIGHTOFFSET 0
-
-#define DEVICE_NAME &quot;yourDeviceName&quot;
-</code></pre>
-
+<p>Got to the directory <code>include/</code> and take a look into the <code>config.h.example</code> - all instructions are noted there.</p>
 <h2 id="uploading">Uploading</h2>
 <p><img src="/assets/uploading.jpg" width="512px"/></p>
 <p><strong>Keep in mind the PCB is flipped when inserted into the watch:</strong></p>
