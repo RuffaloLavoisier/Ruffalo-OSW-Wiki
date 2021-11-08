@@ -95,6 +95,20 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#uploading">Uploading</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#check-the-cable">Check the cable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check-the-driver">Check the driver</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#arduino_tfth-no-such-file-or-directory">Arduino_TFT.h: No such file or directory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lang_stw_start-was-not-declared-in-this-scope">'LANG_STW_START' was not declared in this scope</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#failed-to-connect-to-esp32-timed-out-waiting-for-packet-header">Failed to connect to ESP32: Timed out waiting for packet header</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../3d-files-light-edition/">3D Files Light Edition</a>
@@ -315,8 +329,24 @@ This can be fixed by using <a href="https://github.com/juliagoda/CH341SER">this 
 <p><strong>Keep in mind the PCB is flipped when inserted into the watch:</strong></p>
 <ol>
 <li>To set the watch into upload mode, you need to hold the lower left button and then click the reset button (top left). This enables flash mode, the display will turn dark.</li>
-<li>Press the reset button after uploading</li>
+<li>Press the reset button after uploading.</li>
 </ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="check-the-cable">Check the cable</h3>
+<p>Usually, a few cables do not have a data transmission role. Try to upload to another cable.</p>
+<h3 id="check-the-driver">Check the driver</h3>
+<p>Check the <a href="https://open-smartwatch.github.io/resources/firmware/#serial-drivers-ch340">driver</a> insertion.</p>
+<h3 id="arduino_tfth-no-such-file-or-directory">Arduino_TFT.h: No such file or directory</h3>
+<p>You did not clone the repository with the <code>--recursive-submodules</code> flag.</p>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p>After changing the branch, follow the command :
+<code>git submodule update</code></p>
+</div>
+<h3 id="lang_stw_start-was-not-declared-in-this-scope">'LANG_STW_START' was not declared in this scope</h3>
+<p>You did not rename <code>include/config.h.example</code></p>
+<h3 id="failed-to-connect-to-esp32-timed-out-waiting-for-packet-header">Failed to connect to ESP32: Timed out waiting for packet header</h3>
+<p>You did not hold down BTN1(FLASH) and then tap the RESET button on the watch whilst platform.io was trying to connect.</p>
               
             </div>
           </div>
